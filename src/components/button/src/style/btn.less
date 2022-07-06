@@ -1,0 +1,114 @@
+
+
+// 按钮基础样式
+.btn() {
+  position: relative;
+  display: inline-block;
+  font-weight: @btn-font-weight;
+  font-size: @font-size-base;
+  white-space: nowrap;
+  text-align: center;
+  background-image: none;
+  border: @btn-border-width @btn-border-style transparent;
+  border-color: @btn-border-color;
+  box-shadow: @btn-shadow;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  user-select: none;
+  touch-action: manipulation;
+  .button-size(
+    @btn-height-base; @btn-padding-horizontal-base; @font-size-base; @btn-border-radius-base
+  );
+  > .@{iconfont-css-prefix} {
+    line-height: @line-height-1;
+  }
+  &,
+  &:active,
+  &:focus {
+    outline: 0;
+  }
+  &:not([disabled]):hover {
+    text-decoration: none;
+  }
+  &:not([disabled]):active {
+    outline: 0;
+    box-shadow: none;
+  }
+  &[disabled] {
+    cursor: not-allowed;
+    > * {
+      pointer-events: none;
+    }
+  }
+  &-lg {
+    .button-size(
+      @btn-height-lg; @btn-padding-horizontal-lg; @btn-font-size-lg; @btn-border-radius-base
+    );
+  }
+  &-sm {
+    .button-size(
+      @btn-height-sm; @btn-padding-horizontal-sm; @btn-font-size-sm; @btn-border-radius-sm
+    );
+  }
+}
+
+// 按钮默认类型
+.btn-default() {
+  .button-variant-other(@btn-default-color; @btn-default-bg; @btn-default-border-color);
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+    background: @btn-default-bg;
+  }
+}
+
+.btn-primary() {
+  .button-variant-primary(@btn-primary-color; @btn-primary-bg);
+}
+
+.btn-ghost() {
+  .button-variant-other(@btn-ghost-color, @btn-ghost-bg, @btn-ghost-border);
+}
+
+.btn-dashed() {
+  .button-variant-other(@btn-default-color, @btn-default-bg, @btn-default-border-color);
+  border-style: dashed;
+}
+
+.btn-danger() {
+  .button-variant-primary(@btn-danger-color, @btn-danger-bg);
+}
+
+.btn-link() {
+  .button-variant-other(@btn-link-color, transparent, transparent);
+  box-shadow: none;
+  &:hover {
+    background: @btn-link-hover-bg;
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    border-color: transparent;
+  }
+  .button-disabled(@disabled-color-base; transparent; transparent);
+}
+
+.btn-text() {
+  .button-variant-other(@text-color, transparent, transparent);
+  box-shadow: none;
+  &:hover,
+  &:focus {
+    color: @text-color;
+    background: @btn-text-hover-bg;
+    border-color: transparent;
+  }
+
+  &:active {
+    color: @text-color;
+    background: fadein(@btn-text-hover-bg, 1%);
+    border-color: transparent;
+  }
+
+  .button-disabled(@disabled-color-base; transparent; transparent);
+}

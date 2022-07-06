@@ -1,0 +1,262 @@
+
+// ###################### Button styles #############################
+// 公共样式封装
+@import "./variable.less";
+// button 基础样式
+@import "./base.less";
+// button 封装样式
+@import "./btn.less";
+
+@btn-prefix-style: ~'@{sts-prefix}-btn';
+
+/** 按钮基础样式 */
+.@{btn-prefix-style} {
+
+  line-height: @btn-line-height;
+  padding: 4px 15px;
+
+  .btn();
+  .btn-default();
+
+  > span {
+    display: inline-block;
+  }
+
+  &-primary {
+    .btn-primary();
+
+    .@{btn-prefix-style}-group &:not(:first-child):not(:last-child) {
+      border-right-color: @btn-group-border;
+      border-left-color: @btn-group-border;
+
+      &:disabled {
+        border-color: @btn-default-border-color;
+      }
+    }
+
+    .@{btn-prefix-style}-group &:first-child {
+      &:not(:last-child) {
+        border-right-color: @btn-group-border;
+
+        &[disabled] {
+          border-right-color: @btn-default-border-color;
+        }
+      }
+    }
+
+    .@{btn-prefix-style}-group &:last-child:not(:first-child),
+    .@{btn-prefix-style}-group & + & {
+      border-left-color: @btn-group-border;
+
+      &[disabled] {
+        border-left-color: @btn-default-border-color;
+      }
+    }
+  }
+
+  &-ghost {
+    .btn-ghost();
+  }
+
+  &-background-ghost {
+    color: @btn-default-ghost-color;
+    background: @btn-default-ghost-bg !important;
+    border-color: @btn-default-ghost-border;
+  }
+
+  &-dashed {
+    .btn-dashed();
+  }
+
+  // type="danger" will deprecated
+  // use danger instead
+  &-danger {
+    .btn-danger();
+  }
+
+  &-link {
+    .btn-link();
+  }
+
+  &-text {
+    .btn-text();
+  }
+
+  // &-dangerous {
+  //   .btn-danger-default();
+  // }
+
+  // &-dangerous&-primary {
+  //   .btn-danger();
+  // }
+
+  // &-dangerous&-link {
+  //   .btn-danger-link();
+  // }
+
+  // &-dangerous&-text {
+  //   .btn-danger-text();
+  // }
+}
+
+/** 按钮基础样式-primary */
+// .sts-button-primary {
+//   color: @white;
+//   background-color: @primary-color;
+//   border-color: @primary-color;
+
+//   &:hover,
+//   &:focus {
+//     border-color: @primary-color-hover;
+//     background-color: @primary-color-hover;
+//     color: @white;
+//   }
+// }
+
+// /** 按钮基础样式-success */
+// .sts-button-success {
+//   color: @white;
+//   background-color: @success-color;
+//   border-color: @success-color;
+
+//   &:hover,
+//   &:focus {
+//     border-color: @success-color-hover;
+//     background-color: @success-color-hover;
+//     color: @white;
+//   }
+// }
+
+// /** 按钮基础样式-info */
+// .sts-button-info {
+//   color: @white;
+//   background-color: @info-color;
+//   border-color: @info-color;
+
+//   &:hover,
+//   &:focus {
+//     border-color: @info-color-hover;
+//     background-color: @info-color-hover;
+//     color: @white;
+//   }
+// }
+
+// /** 按钮基础样式-warning */
+// .sts-button-warning {
+//   color: @white;
+//   background-color: @warning-color;
+//   border-color: @warning-color;
+
+//   &:hover,
+//   &:focus {
+//     border-color: @warning-color-hover;
+//     background-color: @warning-color-hover;
+//     color: @white;
+//   }
+// }
+
+// /** 按钮基础样式-danger */
+// .sts-button-danger {
+//   color: @white;
+//   background-color: @danger-color;
+//   border-color: @danger-color;
+
+//   &:hover,
+//   &:focus {
+//     border-color: @danger-color-hover;
+//     background-color: @danger-color-hover;
+//     color: @white;
+//   }
+// }
+
+// /** 按钮镂空样式-基础 */
+// .sts-button.is-plain {
+//   &:hover,
+//   &:focus {
+//     border-color: @primary-color-hover;
+//     background-color: @white;
+//     color: @primary-color-hover;
+//   }
+// }
+
+// /** 按钮镂空样式-primary */
+// .sts-button-primary.is-plain {
+//   color: @primary-color-plain;
+//   background-color: @primary-color-background;
+//   border-color: @primary-color-border;
+
+//   &:hover,
+//   &:focus {
+//     border-color: @primary-color-hover;
+//     background-color: @primary-color-hover;
+//     color: @white;
+//   }
+// }
+
+// /** 按钮镂空样式-success */
+// .sts-button-success.is-plain {
+//   color: @success-color-plain;
+//   background-color: @success-color-background;
+//   border-color: @success-color-border;
+
+//   &:hover,
+//   &:focus {
+//     border-color: @success-color-hover;
+//     background-color: @success-color-hover;
+//     color: @white;
+//   }
+// }
+
+// /** 按钮镂空样式-info */
+// .sts-button-info.is-plain {
+//   color: @info-color-plain;
+//   background-color: @info-color-background;
+//   border-color: @info-color-border;
+
+//   &:hover,
+//   &:focus {
+//     border-color: @info-color-hover;
+//     background-color: @info-color-hover;
+//     color: @white;
+//   }
+// }
+
+// /** 按钮镂空样式-warning */
+// .sts-button-warning.is-plain {
+//   color: @warning-color-plain;
+//   background-color: @warning-color-background;
+//   border-color: @warning-color-border;
+
+//   &:hover,
+//   &:focus {
+//     border-color: @warning-color-hover;
+//     background-color: @warning-color-hover;
+//     color: @white;
+//   }
+// }
+
+// /** 按钮镂空样式-danger */
+// .sts-button-danger.is-plain {
+//   color: @danger-color-plain;
+//   background-color: @danger-color-background;
+//   border-color: @danger-color-border;
+
+//   &:hover,
+//   &:focus {
+//     border-color: @danger-color-hover;
+//     background-color: @danger-color-hover;
+//     color: @white;
+//   }
+// }
+
+// /** 按钮圆角样式 */
+// .sts-button.is-round {
+//   border-radius: 20px;
+//   padding: 12px, 23px;
+// }
+
+// /** 按钮圆形样式 */
+// .sts-button.is-circle {
+//   border-radius: 50%;
+//   padding: 5px;
+// }

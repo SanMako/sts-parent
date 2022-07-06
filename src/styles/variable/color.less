@@ -1,0 +1,50 @@
+
+// 基础颜色
+@white: #ffffff;
+@black: #000000;
+
+// 蓝色
+@blue-base: #1890ff;
+@blue-6: @blue-base;
+
+// 绿色
+@green-base: #52c41a;
+@green-6: @green-base;
+
+// 红色
+@red-base: #f5222d;
+@red-1: color(~`colorPalette('@{red-6}', 1) `);
+@red-2: color(~`colorPalette('@{red-6}', 2) `);
+@red-3: color(~`colorPalette('@{red-6}', 3) `);
+@red-4: color(~`colorPalette('@{red-6}', 4) `);
+@red-5: color(~`colorPalette('@{red-6}', 5) `);
+@red-6: @red-base;
+@red-7: color(~`colorPalette('@{red-6}', 7) `);
+@red-8: color(~`colorPalette('@{red-6}', 8) `);
+@red-9: color(~`colorPalette('@{red-6}', 9) `);
+@red-10: color(~`colorPalette('@{red-6}', 10) `);
+
+// 主色
+@primary-color: @blue-6;
+@primary-5: color(~`colorPalette('@{primary-color}', 5) `);
+@primary-color-hover: color(~`colorPalette('@{primary-color}', 5) `);
+
+// 成功
+@success-color: @green-6;
+
+// 错误
+@error-color: @red-5;
+
+// 链接
+@link-color: @primary-color;
+
+// 禁用
+@disabled-bg-color: @background-color-base;
+
+// 背景色
+@background-base: @white;
+@background-color-light: hsv(0, 0, 98%); // background of header and selected item
+@background-color-base: hsv(0, 0, 96%); // Default grey background color
+
+// 边框颜色
+@border-color-base: #d9d9d9;
