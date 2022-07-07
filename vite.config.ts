@@ -3,6 +3,7 @@ import vue from "@vitejs/plugin-vue";
 import federation from "@originjs/vite-plugin-federation";
 import { resolve } from "path";
 import copy from "rollup-plugin-copy";
+import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 
 const root = process.cwd();
 
@@ -62,6 +63,12 @@ export default ({ mode }: ConfigEnv): UserConfig => {
           },
         ],
         hook: "writeBundle", // notice here
+      }),
+      createSvgIconsPlugin({
+        // 指定需要缓存的图标文件夹
+        iconDirs: [pathResolve("src/assets/svg")],
+        // 指定symbolId格式
+        symbolId: "icon-[dir]-[name]",
       }),
     ],
     build: {

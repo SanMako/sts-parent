@@ -1,11 +1,11 @@
 
 // ###################### Button styles #############################
-// 公共样式封装
+// 变量封装
 @import "./variable.less";
-// button 基础样式
-@import "./base.less";
 // button 封装样式
 @import "./btn.less";
+
+@import "/@/styles/index.less";
 
 @btn-prefix-style: ~'@{sts-prefix}-btn';
 
@@ -13,7 +13,7 @@
 .@{btn-prefix-style} {
 
   line-height: @btn-line-height;
-  padding: 4px 15px;
+  padding: 4px 10px;
 
   .btn();
   .btn-default();
@@ -30,7 +30,7 @@
       border-left-color: @btn-group-border;
 
       &:disabled {
-        border-color: @btn-default-border-color;
+        border-color: @btn-border-color;
       }
     }
 
@@ -39,7 +39,7 @@
         border-right-color: @btn-group-border;
 
         &[disabled] {
-          border-right-color: @btn-default-border-color;
+          border-right-color: @btn-border-color;
         }
       }
     }
@@ -49,7 +49,7 @@
       border-left-color: @btn-group-border;
 
       &[disabled] {
-        border-left-color: @btn-default-border-color;
+        border-left-color: @btn-border-color;
       }
     }
   }
@@ -59,9 +59,9 @@
   }
 
   &-background-ghost {
-    color: @btn-default-ghost-color;
-    background: @btn-default-ghost-bg !important;
-    border-color: @btn-default-ghost-border;
+    color: @btn-ghost-color;
+    background: @btn-ghost-bg !important;
+    border-color: @btn-ghost-border;
   }
 
   &-dashed {
@@ -74,6 +74,34 @@
     .btn-danger();
   }
 
+  &-dangerous {
+    .btn-danger-default();
+  }
+
+  &-dangerous&-primary {
+    .btn-danger();
+  }
+
+  &-dangerous&-link {
+    .btn-danger-link();
+  }
+
+  &-dangerous&-text {
+    .btn-danger-text();
+  }
+
+  &-icon-only {
+    .btn-square(@btn-prefix-style);
+    vertical-align: -1px;
+  }
+
+  &-round {
+    .btn-round(@btn-prefix-style);
+    &.@{btn-prefix-style}-icon-only {
+      width: auto;
+    }
+  }
+
   &-link {
     .btn-link();
   }
@@ -82,181 +110,100 @@
     .btn-text();
   }
 
-  // &-dangerous {
-  //   .btn-danger-default();
-  // }
+  &-circle {
+    .btn-circle(@btn-prefix-style);
+  }
 
-  // &-dangerous&-primary {
-  //   .btn-danger();
-  // }
+  &::before {
+    position: absolute;
+    top: -@btn-border-width;
+    right: -@btn-border-width;
+    bottom: -@btn-border-width;
+    left: -@btn-border-width;
+    z-index: 1;
+    display: none;
+    background: @white;
+    border-radius: inherit;
+    opacity: 0.35;
+    transition: opacity 0.2s;
+    content: '';
+    pointer-events: none;
+  }
 
-  // &-dangerous&-link {
-  //   .btn-danger-link();
-  // }
+  &&-loading {
+    position: relative;
+    &:not([disabled]) {
+      pointer-events: none;
+    }
 
-  // &-dangerous&-text {
-  //   .btn-danger-text();
-  // }
+    &::before {
+      display: block;
+    }
+  }
+
+  &&-loading:not(&-circle):not(&-circle-outline):not(&-icon-only) {
+    // padding-left: 29px;
+    .@{iconfont-css-prefix}:not(:last-child) {
+      margin-left: -14px;
+    }
+  }
+
+  &-sm&-loading:not(&-circle):not(&-circle-outline):not(&-icon-only) {
+    // padding-left: 24px;
+    .@{iconfont-css-prefix} {
+      margin-left: -17px;
+    }
+  }
+
+  .@{iconfont-css-prefix} {
+    transition: margin-left 0.3s @ease-in-out;
+
+    // Follow icon blur under windows. Change the render.
+    // https://github.com/ant-design/ant-design/issues/13924
+    &.@{iconfont-css-prefix}-plus,
+    &.@{iconfont-css-prefix}-minus {
+      > svg {
+        shape-rendering: optimizeSpeed;
+      }
+    }
+  }
+
+  &:focus > span,
+  &:active > span {
+    position: relative;
+  }
+
+  // To ensure that a space will be placed between character and `Icon`.
+  > .@{iconfont-css-prefix} + span,
+  > span + .@{iconfont-css-prefix} {
+    margin-left: @margin-xs;
+  }
+
+  &-background-ghost&-primary {
+    .button-variant-ghost(@btn-primary-bg);
+  }
+
+  &-background-ghost&-danger {
+    .button-variant-ghost(@btn-danger-border);
+  }
+
+  &-background-ghost&-dangerous {
+    .button-variant-ghost(@btn-danger-border);
+  }
+
+  &-background-ghost&-dangerous&-link {
+    .button-variant-ghost(@btn-danger-border, transparent);
+  }
+
+  &&-block {
+    width: 100%;
+  }
+  &:empty {
+    display: inline-block;
+    width: 0;
+    visibility: hidden;
+    content: '\a0';
+  }
+
 }
 
-/** 按钮基础样式-primary */
-// .sts-button-primary {
-//   color: @white;
-//   background-color: @primary-color;
-//   border-color: @primary-color;
-
-//   &:hover,
-//   &:focus {
-//     border-color: @primary-color-hover;
-//     background-color: @primary-color-hover;
-//     color: @white;
-//   }
-// }
-
-// /** 按钮基础样式-success */
-// .sts-button-success {
-//   color: @white;
-//   background-color: @success-color;
-//   border-color: @success-color;
-
-//   &:hover,
-//   &:focus {
-//     border-color: @success-color-hover;
-//     background-color: @success-color-hover;
-//     color: @white;
-//   }
-// }
-
-// /** 按钮基础样式-info */
-// .sts-button-info {
-//   color: @white;
-//   background-color: @info-color;
-//   border-color: @info-color;
-
-//   &:hover,
-//   &:focus {
-//     border-color: @info-color-hover;
-//     background-color: @info-color-hover;
-//     color: @white;
-//   }
-// }
-
-// /** 按钮基础样式-warning */
-// .sts-button-warning {
-//   color: @white;
-//   background-color: @warning-color;
-//   border-color: @warning-color;
-
-//   &:hover,
-//   &:focus {
-//     border-color: @warning-color-hover;
-//     background-color: @warning-color-hover;
-//     color: @white;
-//   }
-// }
-
-// /** 按钮基础样式-danger */
-// .sts-button-danger {
-//   color: @white;
-//   background-color: @danger-color;
-//   border-color: @danger-color;
-
-//   &:hover,
-//   &:focus {
-//     border-color: @danger-color-hover;
-//     background-color: @danger-color-hover;
-//     color: @white;
-//   }
-// }
-
-// /** 按钮镂空样式-基础 */
-// .sts-button.is-plain {
-//   &:hover,
-//   &:focus {
-//     border-color: @primary-color-hover;
-//     background-color: @white;
-//     color: @primary-color-hover;
-//   }
-// }
-
-// /** 按钮镂空样式-primary */
-// .sts-button-primary.is-plain {
-//   color: @primary-color-plain;
-//   background-color: @primary-color-background;
-//   border-color: @primary-color-border;
-
-//   &:hover,
-//   &:focus {
-//     border-color: @primary-color-hover;
-//     background-color: @primary-color-hover;
-//     color: @white;
-//   }
-// }
-
-// /** 按钮镂空样式-success */
-// .sts-button-success.is-plain {
-//   color: @success-color-plain;
-//   background-color: @success-color-background;
-//   border-color: @success-color-border;
-
-//   &:hover,
-//   &:focus {
-//     border-color: @success-color-hover;
-//     background-color: @success-color-hover;
-//     color: @white;
-//   }
-// }
-
-// /** 按钮镂空样式-info */
-// .sts-button-info.is-plain {
-//   color: @info-color-plain;
-//   background-color: @info-color-background;
-//   border-color: @info-color-border;
-
-//   &:hover,
-//   &:focus {
-//     border-color: @info-color-hover;
-//     background-color: @info-color-hover;
-//     color: @white;
-//   }
-// }
-
-// /** 按钮镂空样式-warning */
-// .sts-button-warning.is-plain {
-//   color: @warning-color-plain;
-//   background-color: @warning-color-background;
-//   border-color: @warning-color-border;
-
-//   &:hover,
-//   &:focus {
-//     border-color: @warning-color-hover;
-//     background-color: @warning-color-hover;
-//     color: @white;
-//   }
-// }
-
-// /** 按钮镂空样式-danger */
-// .sts-button-danger.is-plain {
-//   color: @danger-color-plain;
-//   background-color: @danger-color-background;
-//   border-color: @danger-color-border;
-
-//   &:hover,
-//   &:focus {
-//     border-color: @danger-color-hover;
-//     background-color: @danger-color-hover;
-//     color: @white;
-//   }
-// }
-
-// /** 按钮圆角样式 */
-// .sts-button.is-round {
-//   border-radius: 20px;
-//   padding: 12px, 23px;
-// }
-
-// /** 按钮圆形样式 */
-// .sts-button.is-circle {
-//   border-radius: 50%;
-//   padding: 5px;
-// }

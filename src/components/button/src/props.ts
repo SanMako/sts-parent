@@ -58,7 +58,9 @@ const buttonProps = {
   shape: {
     type: String,
     default: ButtonShape.default,
-    validator: (v: string) => v in ButtonShape,
+    // Invalid prop: custom validator check failed for prop "shape".
+    // validator: (v: string) => v in ButtonShape,
+    validator: (v: string) => ["default", "circle", "round", ""].includes(v),
   },
   /**
    * 设置按钮大小

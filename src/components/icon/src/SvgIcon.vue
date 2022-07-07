@@ -57,6 +57,7 @@ export default defineComponent({
   display: inline-block;
   overflow: hidden;
   fill: currentColor;
+  vertical-align: -0.15em;
 }
 
 .svg-icon-spin {

@@ -1,46 +1,55 @@
 
-// 颜色
-@btn-default-color: @text-color;
-@btn-primary-color: @white;
-@btn-ghost-color: @text-color;
-@btn-danger-color: @white;
-@btn-link-color: @link-color;
-@btn-disable-color: @disabled-color-base;
-@btn-default-ghost-color: @white;
-
-// 边框色
-@btn-border-color: @border-color-base;
-@btn-default-border-color: @border-color-base;
-@btn-ghost-border: @border-color-base;
-@btn-disable-border-color: @border-color-base;
-@btn-group-border: @primary-5;
-@btn-danger-border: color(~`colorPalette('@{error-color}', 5) `);
-@btn-default-ghost-border: @white;
-// 背景色
-@btn-default-bg: @background-base;
-@btn-primary-bg: @primary-color;
-@btn-ghost-bg: transparent;
-@btn-danger-bg: color(~`colorPalette('@{error-color}', 5) `);
-@btn-disable-bg-color: @disabled-bg-color;
-@btn-default-ghost-bg: transparent;
-
-// 阴影
 @btn-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
-@btn-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+
+// default
+@btn-default-color: @text-color;
+@btn-default-bg: @background-base;
+@btn-border-color: @border-color-base;
+
+// primary
+@btn-primary-color: @white;
+@btn-primary-bg: @primary-color;
 @btn-primary-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
-// 鼠标划过的颜色
+
+// danger
+@btn-danger-color: @white;
+@btn-danger-border: color(~`colorPalette('@{error-color}', 5) `);
+@btn-danger-bg: color(~`colorPalette('@{error-color}', 5) `);
+
+// link
+@btn-link-color: @link-color;
 @btn-link-hover-bg: transparent;
+
+// disable
+@btn-disable-color: @disabled-color-base;
+@btn-disable-border-color: @border-color-base;
+@btn-disable-bg-color: @disabled-bg-color;
+
+// group
+@btn-group-border: @primary-5;
+
+// text
+@btn-text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
 @btn-text-hover-bg: rgba(0, 0, 0, 0.018);
+
+// ghost
+@btn-ghost-color: @text-color;
+@btn-ghost-border: @white;
+@btn-ghost-bg: transparent;
+
 // 字体
 @btn-font-size-lg: @font-size-lg;
 @btn-font-size-sm: @font-size-base;
 @btn-font-weight: @font-weight-400;
+
 // 样式
 @btn-border-style: @border-style-base;
+
 // 水平 padding
 @btn-padding-horizontal-base: @padding-md-px-16 - 1px;
 @btn-padding-horizontal-lg: @padding-md-px-16 - 1px;
 @btn-padding-horizontal-sm: @padding-xs-px-8 - 1px;
+
 // 圆角度
 @btn-border-radius-base: @border-radius-base;
 @btn-border-radius-sm: @border-radius-base;
@@ -52,5 +61,16 @@
 @btn-height-base: @height-px-32;
 @btn-height-sm: @height-px-24;
 @btn-height-lg: @height-px-40;
-@btn-line-height: @line-height-base;
 
+@btn-circle-size: @btn-height-base;
+@btn-circle-size-lg: @btn-height-lg;
+@btn-circle-size-sm: @btn-height-sm;
+
+@btn-square-size: @btn-height-base;
+@btn-square-size-lg: @btn-height-lg;
+@btn-square-size-sm: @btn-height-sm;
+@btn-square-only-icon-size: @font-size-base + 2px;
+@btn-square-only-icon-size-sm: @font-size-base;
+@btn-square-only-icon-size-lg: @btn-font-size-lg + 2px;
+
+@btn-line-height: @line-height-base;
