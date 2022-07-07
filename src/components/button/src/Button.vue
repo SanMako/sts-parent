@@ -32,11 +32,11 @@ export default defineComponent({
   props: buttonProps,
   slots: ["icon"],
   emits: ["click"],
-  setup(props, { slots, attrs, emit }) {
+  setup(props, { attrs, emit }) {
     const { prefixStyle } = useStyle("btn");
 
     const innerLoading: Ref<boolean | number> = ref(false);
-    const delayTimeoutRef = ref(undefined);
+    const delayTimeoutRef = ref();
 
     const loadingOrDelay = computed(() =>
       typeof props.loading === "object" && props.loading.delay
@@ -106,7 +106,7 @@ export default defineComponent({
   },
 });
 
-function isUnborderedButtonType(type: ButtonTypes | undefined) {
+function isUnborderedButtonType(type: string) {
   return type === ButtonTypes.text || type === ButtonTypes.link;
 }
 </script>
