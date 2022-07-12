@@ -1,5 +1,4 @@
 import { InjectionKey, Ref } from "vue";
-import { LocaleType } from "/@/enums/TypeEnums";
 import { useConfigProvider, useConfigInject } from "/@/hooks/useContext";
 
 export interface AppConfigContextProps {

@@ -23,7 +23,6 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import StsButton from "/@/components/button";
 import Basic from "./basic.vue";
 import Disabled from "./disabled.vue";
 import Ghost from "./ghost.vue";
@@ -41,7 +40,6 @@ interface DelayLoading {
 export default defineComponent({
   name: "Button",
   components: {
-    StsButton,
     Basic,
     Disabled,
     Ghost,

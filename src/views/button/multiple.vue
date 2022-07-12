@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import StsButton from "/@/components/button";
+import { StsButton } from "/@/components/button";
 import type { MenuProps } from "ant-design-vue";
 
 export default defineComponent({

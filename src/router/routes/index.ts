@@ -24,12 +24,6 @@ export const FormRouter: RouteRecordRaw = {
   component: () => import("/@/views/form/index.vue"),
 };
 
-export const TooltipRouter: RouteRecordRaw = {
-  path: "/tooltip",
-  name: "Tooltip",
-  component: () => import("/@/views/tooltip/index.vue"),
-};
-
 /**
  * 静态路由
  */
@@ -37,6 +31,5 @@ export const routes: RouteRecordRaw[] = [
   HomeRouter,
   ButtonRouter,
   InputRouter,
-  TooltipRouter,
   FormRouter,
 ];

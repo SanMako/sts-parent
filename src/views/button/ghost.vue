@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import StsButton from "/@/components/button";
+import { StsButton } from "/@/components/button";
 
 export default defineComponent({
   name: "Ghost",

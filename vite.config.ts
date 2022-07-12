@@ -70,7 +70,11 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       federation({
         name: "sts-parent",
         filename: "StsParent.js",
-        exposes: {},
+        exposes: {
+          "./StsButton": "./src/components/button",
+          "./StsForm": "./src/components/form",
+          "./StsInput": "./src/components/input",
+        },
         shared: ["vue", "vue-router"],
       }),
       copy({

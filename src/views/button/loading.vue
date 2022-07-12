@@ -17,7 +17,7 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import StsButton from "/@/components/button";
+import { StsButton } from "/@/components/button";
 
 interface DelayLoading {
   delay: number;
