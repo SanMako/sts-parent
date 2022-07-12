@@ -3,7 +3,7 @@
 <script lang="ts">
 import { defineComponent, toRefs } from "vue";
 import { appConfigProviderProps } from "./props";
-import { useAppProvideContext } from "/@/hooks/useAppContext";
+import { useAppProviderContext } from "/@/hooks/useAppContext";
 
 export default defineComponent({
   name: "AppConfigProvider",
@@ -13,7 +13,7 @@ export default defineComponent({
     const { locale, prefixStyle, isMobile } = toRefs(props);
 
     // 将变量注入到全局变量中
-    useAppProvideContext({ locale, prefixStyle, isMobile });
+    useAppProviderContext({ locale, prefixStyle, isMobile });
 
     return () => slots.default?.();
   },

@@ -1,11 +1,11 @@
 import { InjectionKey, Ref } from "vue";
 import { LocaleType } from "/@/enums/TypeEnums";
-import { useConfigProvide, useConfigInject } from "/@/hooks/useContext";
+import { useConfigProvider, useConfigInject } from "/@/hooks/useContext";
 
 export interface AppConfigContextProps {
   prefixStyle: Ref<string>;
   isMobile: Ref<boolean>;
-  locale: Ref<LocaleType>;
+  locale: Ref<string>;
 }
 
 const key: InjectionKey<AppConfigContextProps> = Symbol();
@@ -15,8 +15,8 @@ const key: InjectionKey<AppConfigContextProps> = Symbol();
  * @param context
  * @returns
  */
-export function useAppProvideContext(context: AppConfigContextProps) {
-  return useConfigProvide<AppConfigContextProps>(context, key);
+export function useAppProviderContext(context: AppConfigContextProps) {
+  return useConfigProvider<AppConfigContextProps>(context, key);
 }
 
 /**

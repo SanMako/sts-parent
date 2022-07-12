@@ -7,7 +7,7 @@ import {
   UnwrapRef,
 } from "vue";
 
-export interface ConfigProvideOptions {
+export interface ConfigProviderOptions {
   readonly?: boolean;
   createProvider?: boolean;
   native?: boolean;
@@ -17,10 +17,10 @@ type ShallowUnwrap<T> = {
   [P in keyof T]: UnwrapRef<T[P]>;
 };
 
-export function useConfigProvide<T>(
+export function useConfigProvider<T>(
   context: any,
   key: InjectionKey<T> = Symbol(),
-  options: ConfigProvideOptions = {}
+  options: ConfigProviderOptions = {}
 ) {
   const { readonly = true, createProvider = false, native = false } = options;
 

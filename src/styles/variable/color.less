@@ -28,6 +28,7 @@
 @primary-color: @blue-6;
 @primary-5: color(~`colorPalette('@{primary-color}', 5) `);
 @primary-color-hover: color(~`colorPalette('@{primary-color}', 5) `);
+@primary-color-outline: fade(@primary-color, @outline-fade);
 
 // 成功
 @success-color: @green-6;
@@ -40,6 +41,9 @@
 
 // 禁用
 @disabled-bg-color: @background-color-base;
+@disabled-color: fade(#000, 25%);
+@disabled-color-base: fade(#000, 25%);
+@disabled-color-dark: fade(#fff, 35%);
 
 // 背景色
 @background-base: @white;
@@ -48,3 +52,7 @@
 
 // 边框颜色
 @border-color-base: #d9d9d9;
+
+@text-color: fade(@black, 85%);
+
+@shadow-color: rgba(0, 0, 0, 0.15);

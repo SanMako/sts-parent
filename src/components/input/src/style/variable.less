@@ -1,0 +1,26 @@
+
+@input-height-base: @height-base;
+@input-height-lg: @height-lg;
+@input-height-sm: @height-sm;
+
+@input-placeholder-color: hsv(0, 0, 75%);
+
+@input-padding-horizontal-base: @control-padding-horizontal - 1px;
+@input-padding-vertical-base: max(
+  (round(((@input-height-base - @font-size-base * @line-height-base) / 2) * 10) / 10) -
+    @border-width-base,
+  3px
+);
+
+@input-color: @text-color;
+@input-bg: @white;
+@input-border-color: @border-color-base;
+
+@input-disabled-color: @disabled-color;
+@input-disabled-bg: @disabled-bg-color;
+
+@input-hover-border-color: @primary-5;
+
+@input-outline-offset: 0 0;
+
+@input-affix-margin: @margin-xss;

@@ -1,0 +1,72 @@
+@import "/@/styles/reset.less";
+
+@import "/@/styles/compatibility.less";
+
+@import "./variable.less";
+
+@import "./input.less";
+
+@input-prefix-style: ~'@{sts-prefix}-input';
+@input-rtl-style: ~'@{sts-prefix}-input-rtl';
+
+// Input styles
+.@{input-prefix-style} {
+  .reset-component();
+  .input();
+
+  &-prefix,
+  &-suffix {
+    display: flex;
+    flex: none;
+    align-items: center;
+  }
+  
+  &-prefix {
+    margin-right: @input-affix-margin;
+  }
+  
+  &-suffix {
+    margin-left: @input-affix-margin;
+  }
+}
+
+.@{input-prefix-style}-container {
+  .input();
+  display: inline-flex;
+
+  &:not(&-disabled):hover {
+    .hover();
+    z-index: 1;
+    .@{input-prefix-style}-search-with-button & {
+      z-index: 0;
+    }
+  }
+
+  &-focused,
+  &:focus {
+    z-index: 1;
+  }
+
+  &-disabled {
+    .@{input-prefix-style}[disabled] {
+      background: transparent;
+    }
+  }
+
+  > input.@{input-prefix-style} {
+    padding: 0;
+    border: none;
+    outline: none;
+
+    &:focus {
+      box-shadow: none !important;
+    }
+  }
+
+  &::before {
+    width: 0;
+    visibility: hidden;
+    content: '\a0';
+  }
+
+}

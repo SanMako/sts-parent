@@ -1,0 +1,120 @@
+
+/**
+ * 输入框基础样式
+ */
+.input() {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  min-width: 0;
+  padding: @input-padding-vertical-base @input-padding-horizontal-base;
+  color: @input-color;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  background-color: @input-bg;
+  background-image: none;
+  border: @border-width-base @border-style-base @input-border-color;
+  border-radius: @border-radius-base;
+  transition: all 0.3s;
+  .placeholder();
+
+  &:hover {
+    .hover();
+  }
+
+  &:focus,
+  &-focused {
+    .active();
+  }
+
+  &-disabled {
+    .disabled();
+  }
+
+  &[disabled] {
+    .disabled();
+  }
+
+  // &-borderless {
+  //   &,
+  //   &:hover,
+  //   &:focus,
+  //   &-focused,
+  //   &-disabled,
+  //   &[disabled] {
+  //     background-color: transparent;
+  //     border: none;
+  //     box-shadow: none;
+  //   }
+  // }
+
+  // // Reset height for `textarea`s
+  // textarea& {
+  //   max-width: 100%; // prevent textearea resize from coming out of its container
+  //   height: auto;
+  //   min-height: @input-height-base;
+  //   line-height: @line-height-base;
+  //   vertical-align: bottom;
+  //   transition: all 0.3s, height 0s;
+  // }
+
+  // // Size
+  // &-lg {
+  //   .input-lg();
+  // }
+
+  // &-sm {
+  //   .input-sm();
+  // }
+}
+
+.active(@borderColor: @primary-color; @hoverBorderColor: @primary-color-hover; @outlineColor: @primary-color-outline) {
+  & when (@theme = dark) {
+    border-color: @borderColor;
+  }
+  & when (not (@theme = dark) and not (@theme = variable)) {
+    border-color: @hoverBorderColor;
+  }
+  & when not (@theme = variable) {
+    box-shadow: @input-outline-offset @outline-blur-size @outline-width
+      fade(@borderColor, @outline-fade);
+  }
+  & when (@theme = variable) {
+    border-color: @hoverBorderColor;
+    box-shadow: @input-outline-offset @outline-blur-size @outline-width @outlineColor;
+  }
+  border-right-width: @border-width-base !important;
+  outline: 0;
+}
+
+.disabled() {
+  color: @input-disabled-color;
+  background-color: @input-disabled-bg;
+  border-color: @input-border-color;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 1;
+
+  &:hover {
+    .hover(@input-border-color);
+  }
+}
+
+.hover() {
+  .@{input-rtl-style} & {
+    border-right-width: 0;
+    border-left-width: @border-width-base !important;
+  }
+}
+
+.hover(@color: @input-hover-border-color) {
+  border-color: @color;
+  border-right-width: @border-width-base !important;
+}
+
+.active() {
+  .@{input-rtl-style} & {
+    border-right-width: 0;
+    border-left-width: @border-width-base !important;
+  }
+}

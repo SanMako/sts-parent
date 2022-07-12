@@ -1,5 +1,12 @@
 import { PropType } from "vue";
-import { ButtonShape, ButtonSize, ButtonTypes } from "/@/enums/TypeEnums";
+import {
+  buttonShape,
+  ButtonShape,
+  buttonTypes,
+  ButtonTypes,
+  SizeType,
+  sizeType,
+} from "/@/enums/TypeEnums";
 
 const buttonProps = {
   /**
@@ -13,8 +20,7 @@ const buttonProps = {
     type: String,
     default: ButtonTypes.none,
     // validator: (v: string) => v in ButtonTypes,
-    validator: (v: string) =>
-      ["default", "primary", "ghost", "dashed", "link", "text", ""].includes(v),
+    validator: (v: string) => buttonTypes.includes(v),
   },
   /**
    * 将按钮宽度调整为其父宽度的选项
@@ -60,15 +66,15 @@ const buttonProps = {
     default: ButtonShape.default,
     // Invalid prop: custom validator check failed for prop "shape".
     // validator: (v: string) => v in ButtonShape,
-    validator: (v: string) => ["default", "circle", "round", ""].includes(v),
+    validator: (v: string) => buttonShape.includes(v),
   },
   /**
    * 设置按钮大小
    */
   size: {
     type: String,
-    default: ButtonSize.default,
-    validator: (v: string) => v in ButtonSize,
+    default: SizeType.default,
+    validator: (v: string) => sizeType.includes(v),
   },
   /**
    * 相当于 a 链接的 target 属性，href 存在时生效

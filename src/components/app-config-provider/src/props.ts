@@ -1,4 +1,4 @@
-import { LocaleType } from "/@/enums/TypeEnums";
+import { localeType, LocaleType } from "/@/enums/TypeEnums";
 import { prefixStyle } from "/@/config/StyleConfig";
 
 export const appConfigProviderProps = {
@@ -8,7 +8,7 @@ export const appConfigProviderProps = {
   locale: {
     type: String,
     default: LocaleType.default,
-    validator: (v: string) => v in LocaleType,
+    validator: (v: string) => localeType.includes(v),
   },
   /**
    * 样式前缀，用于样式隔离

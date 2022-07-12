@@ -2,6 +2,7 @@ import { ConfigEnv, loadEnv, UserConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import federation from "@originjs/vite-plugin-federation";
 import { resolve } from "path";
+import pkg from "./package.json";
 import copy from "rollup-plugin-copy";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 
@@ -9,9 +10,20 @@ const root = process.cwd();
 
 const pathResolve = (dir: string) => resolve(root, ".", dir);
 
+const { dependencies, devDependencies, name, version } = pkg;
+
 // https://vitejs.dev/config/
 export default ({ mode }: ConfigEnv): UserConfig => {
   return {
+    // 项目根目录（index.html 文件所在的位置）。可以是一个绝对路径，或者一个相对于该配置文件本身的相对路径。
+    root: root,
+    /**
+     * 开发或生产环境服务的公共基础路径。合法的值包括以下几种：
+     *   -> 绝对 URL 路径名，例如 /foo/
+     *   -> 完整的 URL，例如 https://foo.com/
+     *   -> 空字符串或 ./（用于开发环境）
+     */
+    base: "/",
     resolve: {
       alias: resolveAlias,
     },
@@ -26,6 +38,12 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       headers: {
         "Access-Control-Allow-Origin": "*",
       },
+    },
+    define: {
+      // setting vue-i18n-next
+      // Suppress warning
+      __INTLIFY_PROD_DEVTOOLS__: false,
+      __APP_INFO__: JSON.stringify(__APP_INFO__),
     },
     css: {
       //* css模块化
@@ -90,3 +108,8 @@ const resolveAlias = [
     replacement: pathResolve("src") + "/",
   },
 ];
+
+const __APP_INFO__ = {
+  pkg: { dependencies, devDependencies, name, version },
+  lastBuildTime: "YYYY-MM-DD HH:mm:ss",
+};
