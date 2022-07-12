@@ -1,116 +1,25 @@
 <template>
-  <button
-    :class="getButtonClass"
-    :disabled="disabled"
-    @click="handleClick"
-    :type="htmlType"
-    v-bind="getBindValue"
-  >
-    <span v-if="iconName">
-      <svg-icon style="vertical-align: -0.6em" :size="25" :name="iconName" />
-    </span>
-    <span v-if="$slots.icon && !iconName">
-      <slot name="icon"></slot>
-    </span>
-    <span v-if="$slots.default"><slot></slot></span>
-  </button>
+  <a-button v-bind="getBindValue" @click="onClick">
+    <template #[item]="data" v-for="item in Object.keys($slots)">
+      <slot :name="item" v-bind="data || {}"></slot>
+    </template>
+  </a-button>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, Ref, ref, unref, watch } from "vue";
-// import { Button } from "ant-design-vue";
+import { computed, defineComponent, unref } from "vue";
 import buttonProps from "./props";
-import { useStyle } from "/@/hooks/useAppContext";
-import { ButtonTypes } from "/@/enums/TypeEnums";
 
 export default defineComponent({
   name: "StsButton",
-  components: {
-    // Button,
-  },
   inheritAttrs: false,
   props: buttonProps,
-  slots: ["icon"],
-  emits: ["click"],
-  setup(props, { attrs, emit }) {
-    const { prefixStyle } = useStyle("btn");
+  setup(props, { attrs }) {
+    const getBindValue = computed(() => ({ ...unref(attrs), ...unref(props) }));
 
-    const innerLoading: Ref<boolean | number> = ref(false);
-    const delayTimeoutRef = ref();
-
-    const loadingOrDelay = computed(() =>
-      typeof props.loading === "object" && props.loading.delay
-        ? props.loading.delay || true
-        : !!props.loading
-    );
-
-    watch(
-      loadingOrDelay,
-      (val) => {
-        clearTimeout(delayTimeoutRef.value);
-        if (typeof loadingOrDelay.value === "number") {
-          delayTimeoutRef.value = setTimeout(() => {
-            innerLoading.value = val;
-          }, loadingOrDelay.value);
-        } else {
-          innerLoading.value = val;
-        }
-      },
-      {
-        immediate: true,
-      }
-    );
-
-    const iconName = computed(() => {
-      return innerLoading.value ? "loading-base" : props.icon;
-    });
-
-    const getButtonClass = computed(() => {
-      const { type, ghost, size, shape, danger, block } = props;
-      let sizeCls = "";
-      switch (size) {
-        case "large":
-          sizeCls = "lg";
-          break;
-        case "small":
-          sizeCls = "sm";
-          break;
-        default:
-          break;
-      }
-
-      return {
-        [`${prefixStyle}`]: true,
-        [`${prefixStyle}-${type}`]: type,
-        [`${prefixStyle}-background-ghost`]:
-          ghost && !isUnborderedButtonType(type),
-        [`${prefixStyle}-${sizeCls}`]: sizeCls,
-        [`${prefixStyle}-loading`]: innerLoading.value,
-        [`${prefixStyle}-${shape}`]: shape,
-        [`${prefixStyle}-dangerous`]: !!danger,
-        [`${prefixStyle}-block`]: block,
-      };
-    });
-
-    const handleClick = (event: Event) => {
-      if (innerLoading.value || props.disabled) {
-        event.preventDefault();
-        return;
-      }
-      emit("click", event);
-    };
-
-    const getBindValue = computed(() => ({ ...unref(attrs) }));
-
-    return { getButtonClass, iconName, handleClick, getBindValue };
+    return { getBindValue };
   },
 });
-
-function isUnborderedButtonType(type: string) {
-  return type === ButtonTypes.text || type === ButtonTypes.link;
-}
 </script>
 
-<style lang="less">
-@import "./style/index.less";
-</style>
+<style lang="less"></style>

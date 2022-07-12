@@ -1,7 +1,7 @@
 import { PropType } from "vue";
 import { inputTypes, InputTypes, SizeType, sizeType } from "/@/enums/TypeEnums";
 
-const inputProps = {
+export const inputProps = {
   /**
    * 输入框的值
    */
@@ -48,12 +48,44 @@ const inputProps = {
   },
   prefix: {
     type: String,
-    default: "",
   },
   suffix: {
     type: String,
-    default: "",
   },
 };
 
 export default inputProps;
+
+export const inputSearchProps = {
+  /**
+   * 输入框的值
+   */
+  enterButton: {
+    type: Boolean,
+    default: false,
+  },
+  /**
+   * 搜索 loading
+   */
+  loading: {
+    type: Boolean,
+  },
+  /**
+   * 点击搜索或按下回车键时的回调
+   */
+  onSearch: {
+    type: Function as PropType<
+      (value: string, event?: MouseEvent | KeyboardEvent) => void
+    >,
+  },
+};
+
+export const inputPasswordProps = {
+  /**
+   * 输入框的值
+   */
+  visibilityToggle: {
+    type: Boolean,
+    default: true,
+  },
+};

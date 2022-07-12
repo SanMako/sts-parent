@@ -90,7 +90,7 @@ export enum ButtonShape {
   none = "default",
 }
 
-export const sizeType = ["small", "middle", "large", ""];
+export const sizeType = ["default", "small", "middle", "large", ""];
 
 /**
  * 大小枚举
@@ -99,7 +99,7 @@ export enum SizeType {
   large = "large",
   middle = "middle",
   small = "small",
-  default = "middle",
+  default = "default",
 }
 
 export const localeType = ["default", "zh_CN", "en_US", ""];

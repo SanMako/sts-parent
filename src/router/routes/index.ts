@@ -18,6 +18,12 @@ export const InputRouter: RouteRecordRaw = {
   component: () => import("/@/views/input/index.vue"),
 };
 
+export const FormRouter: RouteRecordRaw = {
+  path: "/form",
+  name: "Form",
+  component: () => import("/@/views/form/index.vue"),
+};
+
 export const TooltipRouter: RouteRecordRaw = {
   path: "/tooltip",
   name: "Tooltip",
@@ -32,4 +38,5 @@ export const routes: RouteRecordRaw[] = [
   ButtonRouter,
   InputRouter,
   TooltipRouter,
+  FormRouter,
 ];

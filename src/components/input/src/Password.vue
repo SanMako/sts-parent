@@ -1,21 +1,20 @@
 <template>
-  <a-input v-bind="getBindValue">
+  <a-input-password v-bind="getBindValue">
     <template #[item]="data" v-for="item in Object.keys($slots)">
       <slot :name="item" v-bind="data || {}"></slot>
     </template>
-  </a-input>
+  </a-input-password>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, unref } from "vue";
-import inputProps from "./props";
+import { inputPasswordProps } from "./props";
 
 export default defineComponent({
-  name: "StsInput",
+  name: "StsPasswordInput",
   inheritAttrs: false,
   components: {},
-  props: inputProps,
-  slots: ["prefix", "suffix"],
+  props: inputPasswordProps,
   setup(props, { attrs }) {
     const getBindValue = computed(() => ({ ...unref(attrs), ...unref(props) }));
 

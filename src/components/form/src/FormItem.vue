@@ -1,21 +1,20 @@
 <template>
-  <a-input v-bind="getBindValue">
+  <a-form-item v-bind="getBindValue">
     <template #[item]="data" v-for="item in Object.keys($slots)">
       <slot :name="item" v-bind="data || {}"></slot>
     </template>
-  </a-input>
+  </a-form-item>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, unref } from "vue";
-import inputProps from "./props";
+import { formItemProps } from "./props";
 
 export default defineComponent({
-  name: "StsInput",
+  name: "StsFormItem",
   inheritAttrs: false,
   components: {},
-  props: inputProps,
-  slots: ["prefix", "suffix"],
+  props: formItemProps,
   setup(props, { attrs }) {
     const getBindValue = computed(() => ({ ...unref(attrs), ...unref(props) }));
 
