@@ -71,11 +71,13 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         name: "sts-parent",
         filename: "StsParent.js",
         exposes: {
-          "./StsButton": "./src/components/button",
+          "./StsButton": "./src/components/button/src/Button.vue",
           "./StsForm": "./src/components/form",
+          "./StsFormItem": "./src/components/form",
           "./StsInput": "./src/components/input",
+          "./SvgIcon": "./src/components/icon",
         },
-        shared: ["vue", "vue-router"],
+        shared: ["vue", "vue-router", "ant-design-vue"],
       }),
       copy({
         targets: [
@@ -94,6 +96,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       }),
     ],
     build: {
+      assetsInlineLimit: 40960,
       target: "esnext",
       minify: false,
       cssCodeSplit: true,
