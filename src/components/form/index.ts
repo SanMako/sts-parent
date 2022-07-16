@@ -1,6 +1,9 @@
 import { withInstall } from "/@/utils";
-import Form from "./src/Form.vue";
-import FormItem from "./src/FormItem.vue";
+import stsForm from "./src/Form.vue";
+import stsFormItem from "./src/FormItem.vue";
+import "ant-design-vue/lib/form/style";
 
-export const StsForm = withInstall(Form);
-export const StsFormItem = withInstall(FormItem);
+export const StsForm = withInstall(stsForm);
+export const StsFormItem = withInstall(stsFormItem);
+
+export default StsForm;

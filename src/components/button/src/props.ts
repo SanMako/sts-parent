@@ -1,12 +1,11 @@
 import { PropType } from "vue";
-import {
-  buttonShape,
-  ButtonShape,
-  buttonTypes,
-  ButtonTypes,
-  SizeType,
-  sizeType,
-} from "/@/enums/TypeEnums";
+import // buttonShape,
+// ButtonShape,
+// buttonTypes,
+// ButtonTypes,
+// SizeType,
+// sizeType,
+"/@/enums/TypeEnums";
 
 const buttonProps = {
   /**
@@ -16,12 +15,12 @@ const buttonProps = {
   /**
    * 设置按钮类型
    */
-  type: {
-    type: String,
-    default: ButtonTypes.none,
-    // validator: (v: string) => v in ButtonTypes,
-    validator: (v: string) => buttonTypes.includes(v),
-  },
+  // type: {
+  //   type: String,
+  //   default: ButtonTypes.none,
+  //   // validator: (v: string) => v in ButtonTypes,
+  //   validator: (v: string) => buttonTypes.includes(v),
+  // },
   /**
    * 将按钮宽度调整为其父宽度的选项
    * default: false
@@ -46,7 +45,7 @@ const buttonProps = {
   /**
    * 设置 button 原生的 type 值，可选值请参考 HTML 标准
    */
-  htmlType: { type: String, default: "button" },
+  // htmlType: { type: String, default: "button" },
   /**
    * 设置按钮的图标类型
    */
@@ -61,21 +60,21 @@ const buttonProps = {
   /**
    * 设置按钮形状
    */
-  shape: {
-    type: String,
-    default: ButtonShape.default,
-    // Invalid prop: custom validator check failed for prop "shape".
-    // validator: (v: string) => v in ButtonShape,
-    validator: (v: string) => buttonShape.includes(v),
-  },
+  // shape: {
+  //   type: String,
+  //   default: ButtonShape.default,
+  //   // Invalid prop: custom validator check failed for prop "shape".
+  //   // validator: (v: string) => v in ButtonShape,
+  //   validator: (v: string) => buttonShape.includes(v),
+  // },
   /**
    * 设置按钮大小
    */
-  size: {
-    type: String,
-    default: SizeType.default,
-    validator: (v: string) => sizeType.includes(v),
-  },
+  // size: {
+  //   type: String,
+  //   default: SizeType.default,
+  //   validator: (v: string) => sizeType.includes(v),
+  // },
   /**
    * 相当于 a 链接的 target 属性，href 存在时生效
    */

@@ -71,18 +71,25 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         name: "sts-parent",
         filename: "StsParent.js",
         exposes: {
-          "./StsButton": "./src/components/button/src/Button.vue",
-          "./StsForm": "./src/components/form",
-          "./StsFormItem": "./src/components/form",
-          "./StsInput": "./src/components/input",
-          "./SvgIcon": "./src/components/icon",
+          "./StsButton": "./src/components/button/index.ts",
+          "./StsForm": "./src/components/form/index.ts",
+          // "./StsFormItem": "./src/components/form",
+          "./StsInput": "./src/components/input/index.ts",
+          "./SvgIcon": "./src/components/icon/index.ts",
         },
-        shared: ["vue", "vue-router", "ant-design-vue"],
+        shared: {
+          vue: {
+            requiredVersion: "3.2.25",
+          },
+          "ant-design-vue": {
+            requiredVersion: "3.2.9",
+          },
+        },
       }),
       copy({
         targets: [
           {
-            src: "dist/assets",
+            src: ["dist/assets", "dist/static"],
             dest: "public",
           },
         ],
@@ -103,6 +110,18 @@ export default ({ mode }: ConfigEnv): UserConfig => {
       rollupOptions: {
         output: {
           minifyInternalExports: false,
+          // chunkFileNames: "static/js/[name]-[hash].js",
+          // entryFileNames: "static/js/[name]-[hash].js",
+          // assetFileNames: "static/[ext]/[name]-[hash].[ext]",
+          manualChunks(id) {
+            if (id.includes("node_modules")) {
+              return id
+                .toString()
+                .split("node_modules/")[1]
+                .split("/")[0]
+                .toString();
+            }
+          },
         },
       },
     },

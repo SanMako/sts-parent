@@ -1,20 +1,23 @@
 <template>
-  <a-input v-bind="getBindValue">
+  <ant-input v-bind="getBindValue">
     <template #[item]="data" v-for="item in Object.keys($slots)">
       <slot :name="item" v-bind="data || {}"></slot>
     </template>
-  </a-input>
+  </ant-input>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, unref } from "vue";
-import inputProps from "./props";
+// import inputProps from "./props";
+import { Input } from "ant-design-vue";
 
 export default defineComponent({
   name: "StsInput",
   inheritAttrs: false,
-  components: {},
-  props: inputProps,
+  components: {
+    AntInput: Input,
+  },
+  // props: inputProps,
   slots: ["prefix", "suffix"],
   setup(props, { attrs }) {
     const getBindValue = computed(() => ({ ...unref(attrs), ...unref(props) }));

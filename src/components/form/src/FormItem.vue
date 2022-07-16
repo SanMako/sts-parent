@@ -1,20 +1,23 @@
 <template>
-  <a-form-item v-bind="getBindValue">
-    <template #[item]="data" v-for="item in Object.keys($slots)">
-      <slot :name="item" v-bind="data || {}"></slot>
+  <ant-form-item v-bind="getBindValue">
+    <template v-if="$slots.default" #default>
+      <slot name="default"></slot>
     </template>
-  </a-form-item>
+  </ant-form-item>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, unref } from "vue";
-import { formItemProps } from "./props";
+// import { formItemProps } from "./props";
+import { FormItem } from "ant-design-vue";
 
 export default defineComponent({
   name: "StsFormItem",
   inheritAttrs: false,
-  components: {},
-  props: formItemProps,
+  components: {
+    AntFormItem: FormItem,
+  },
+  // props: formItemProps,
   setup(props, { attrs }) {
     const getBindValue = computed(() => ({ ...unref(attrs), ...unref(props) }));
 

@@ -1,19 +1,23 @@
 <template>
-  <a-button v-bind="getBindValue" @click="onClick">
+  <ant-button v-bind="getBindValue">
     <template #[item]="data" v-for="item in Object.keys($slots)">
       <slot :name="item" v-bind="data || {}"></slot>
     </template>
-  </a-button>
+  </ant-button>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, unref } from "vue";
-import buttonProps from "./props";
+import { Button } from "ant-design-vue";
+// import buttonProps from "./props";
 
 export default defineComponent({
   name: "StsButton",
   inheritAttrs: false,
-  props: buttonProps,
+  components: {
+    AntButton: Button,
+  },
+  // props: buttonProps,
   setup(props, { attrs }) {
     const getBindValue = computed(() => ({ ...unref(attrs), ...unref(props) }));
 
