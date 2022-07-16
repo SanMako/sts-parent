@@ -73,18 +73,16 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         exposes: {
           "./StsButton": "./src/components/button/index.ts",
           "./StsForm": "./src/components/form/index.ts",
-          // "./StsFormItem": "./src/components/form",
+          "./StsFormItem": "./src/components/form/index.ts",
           "./StsInput": "./src/components/input/index.ts",
           "./SvgIcon": "./src/components/icon/index.ts",
+          "./StsLayout": "./src/components/layout/index.ts",
+          "./StsLayoutHeader": "./src/components/layout/index.ts",
+          "./StsLayoutFooter": "./src/components/layout/index.ts",
+          "./StsLayoutContent": "./src/components/layout/index.ts",
+          "./StsLayoutSider": "./src/components/layout/index.ts",
         },
-        shared: {
-          vue: {
-            requiredVersion: "3.2.25",
-          },
-          "ant-design-vue": {
-            requiredVersion: "3.2.9",
-          },
-        },
+        shared: ["vue", "ant-design-vue"],
       }),
       copy({
         targets: [
