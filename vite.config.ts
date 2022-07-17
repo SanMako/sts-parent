@@ -81,13 +81,17 @@ export default ({ mode }: ConfigEnv): UserConfig => {
           "./StsLayoutFooter": "./src/components/layout/index.ts",
           "./StsLayoutContent": "./src/components/layout/index.ts",
           "./StsLayoutSider": "./src/components/layout/index.ts",
+          "./StsMenu": "./src/components/menu/index.ts",
+          "./StsMenuItem": "./src/components/menu/index.ts",
+          "./StsSubMenu": "./src/components/menu/index.ts",
+          "./StsTooltip": "./src/components/tooltip/index.ts",
         },
         shared: ["vue", "ant-design-vue"],
       }),
       copy({
         targets: [
           {
-            src: ["dist/assets", "dist/static"],
+            src: ["dist/assets"],
             dest: "public",
           },
         ],
