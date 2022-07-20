@@ -1,23 +1,20 @@
 <template>
-  <ant-menu v-bind="getBindValue">
+  <ant-breadcrumb-item v-bind="getBindValue">
     <template #[item]="data" v-for="item in Object.keys($slots)">
       <slot :name="item" v-bind="data || {}"></slot>
     </template>
-  </ant-menu>
+  </ant-breadcrumb-item>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, unref } from "vue";
-import { Menu } from "ant-design-vue";
+import { BreadcrumbItem } from "ant-design-vue";
 
 export default defineComponent({
-  name: "StsMenu",
+  name: "StsBreadcrumbItem",
   components: {
-    AntMenu: Menu,
+    AntBreadcrumbItem: BreadcrumbItem,
   },
-  Item: Menu.Item,
-  SubMenu: Menu.SubMenu,
-  Divider: Menu.Divider,
   setup(props, { attrs }) {
     const getBindValue = computed(() => ({ ...unref(attrs), ...unref(props) }));
 

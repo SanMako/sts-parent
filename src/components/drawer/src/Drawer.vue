@@ -1,23 +1,22 @@
 <template>
-  <ant-menu v-bind="getBindValue">
+  <ant-drawer v-bind="getBindValue">
     <template #[item]="data" v-for="item in Object.keys($slots)">
       <slot :name="item" v-bind="data || {}"></slot>
     </template>
-  </ant-menu>
+  </ant-drawer>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, unref } from "vue";
-import { Menu } from "ant-design-vue";
+import { Drawer } from "ant-design-vue";
 
 export default defineComponent({
-  name: "StsMenu",
+  name: "StsDrawer",
+  inheritAttrs: false,
   components: {
-    AntMenu: Menu,
+    AntDrawer: Drawer,
   },
-  Item: Menu.Item,
-  SubMenu: Menu.SubMenu,
-  Divider: Menu.Divider,
+  // props: buttonProps,
   setup(props, { attrs }) {
     const getBindValue = computed(() => ({ ...unref(attrs), ...unref(props) }));
 

@@ -1,23 +1,22 @@
 <template>
-  <ant-menu v-bind="getBindValue">
+  <ant-radio v-bind="getBindValue">
     <template #[item]="data" v-for="item in Object.keys($slots)">
       <slot :name="item" v-bind="data || {}"></slot>
     </template>
-  </ant-menu>
+  </ant-radio>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, unref } from "vue";
-import { Menu } from "ant-design-vue";
+import { Radio } from "ant-design-vue";
 
 export default defineComponent({
-  name: "StsMenu",
+  name: "StsRadio",
   components: {
-    AntMenu: Menu,
+    AntRadio: Radio,
   },
-  Item: Menu.Item,
-  SubMenu: Menu.SubMenu,
-  Divider: Menu.Divider,
+  Group: Radio.Group,
+  Button: Radio.Button,
   setup(props, { attrs }) {
     const getBindValue = computed(() => ({ ...unref(attrs), ...unref(props) }));
 
