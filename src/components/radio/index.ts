@@ -3,7 +3,7 @@ import { withInstall } from "/@/utils";
 import Radio from "./src/Radio.vue";
 import RadioButton from "./src/RadioButton.vue";
 import RadioGroup from "./src/RadioGroup.vue";
-import "ant-design-vue/lib/radio/style";
+import "ant-design-vue/lib/radio/style/index.css";
 
 /* istanbul ignore next */
 export const StsRadio = withInstall(Radio);

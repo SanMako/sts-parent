@@ -2,7 +2,7 @@ import { withInstall } from "/@/utils";
 import Breadcrumb from "./src/Breadcrumb.vue";
 import BreadcrumbItem from "./src/BreadcrumbItem.vue";
 import BreadcrumbSeparator from "./src/BreadcrumbSeparator.vue";
-import "ant-design-vue/lib/breadcrumb/style";
+import "ant-design-vue/lib/breadcrumb/style/index.css";
 
 /* istanbul ignore next */
 export const StsBreadcrumb = withInstall(Breadcrumb);

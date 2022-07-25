@@ -1,4 +1,4 @@
-import "ant-design-vue/lib/upload/style";
+import "ant-design-vue/lib/upload/style/index.css";
 import { withInstall } from "/@/utils";
 import Upload from "./src/Upload.vue";
 

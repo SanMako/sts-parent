@@ -1,4 +1,4 @@
-import "ant-design-vue/lib/page-header/style";
+import "ant-design-vue/lib/page-header/style/index.css";
 import { withInstall } from "/@/utils";
 import PageHeader from "./src/PageHeader.vue";
 

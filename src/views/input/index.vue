@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <h3>基本用法</h3>
-      <sts-input v-model:value="value" placeholder="基础输入框" />
+      <sts-input v-model:value="value" placeholder="基础输入框" allow-clear />
     </div>
     <hr />
     <div class="row">
@@ -28,21 +28,6 @@
       <br />
       <br />
       <sts-input-search
-        v-model:value="value"
-        placeholder="input search loading with enterButton"
-        loading
-        enter-button
-      />
-      <br />
-      <br />
-      <a-input-search
-        v-model:value="value"
-        placeholder="input search loading deault"
-        loading
-      />
-      <br />
-      <br />
-      <a-input-search
         v-model:value="value"
         placeholder="input search loading with enterButton"
         loading

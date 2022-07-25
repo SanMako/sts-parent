@@ -1,4 +1,4 @@
-import "ant-design-vue/lib/table/style";
+import "ant-design-vue/lib/table/style/index.css";
 import { withInstall } from "/@/utils";
 import Table from "./src/Table.vue";
 

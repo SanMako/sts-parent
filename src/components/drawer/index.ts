@@ -1,4 +1,4 @@
-import "ant-design-vue/lib/drawer/style";
+import "ant-design-vue/lib/drawer/style/index.css";
 import { withInstall } from "/@/utils";
 import Drawer from "./src/Drawer.vue";
 

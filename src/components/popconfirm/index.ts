@@ -1,4 +1,4 @@
-import "ant-design-vue/lib/popconfirm/style";
+import "ant-design-vue/lib/popconfirm/style/index.css";
 import { withInstall } from "/@/utils";
 import Popconfirm from "./src/Popconfirm.vue";
 

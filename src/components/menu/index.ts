@@ -4,7 +4,7 @@ import Menu from "./src/Menu.vue";
 import MenuItem from "./src/MenuItem.vue";
 import SubMenu from "./src/SubMenu.vue";
 import MenuDivider from "./src/MenuDivider.vue";
-import "ant-design-vue/lib/menu/style";
+import "ant-design-vue/lib/menu/style/index.css";
 
 /* istanbul ignore next */
 export const StsMenu = withInstall(Menu);

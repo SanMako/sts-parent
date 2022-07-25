@@ -1,4 +1,4 @@
-import "ant-design-vue/lib/tag/style";
+import "ant-design-vue/lib/tag/style/index.css";
 import { withInstall } from "/@/utils";
 import Tag from "./src/Tag.vue";
 

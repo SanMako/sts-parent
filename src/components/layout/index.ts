@@ -5,7 +5,7 @@ import Header from "./src/Header.vue";
 import Footer from "./src/Footer.vue";
 import Content from "./src/Content.vue";
 import Sider from "./src/Sider.vue";
-import "ant-design-vue/lib/layout/style";
+import "ant-design-vue/lib/layout/style/index.css";
 
 /* istanbul ignore next */
 export const StsLayoutHeader = withInstall(Header);

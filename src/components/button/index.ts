@@ -1,4 +1,4 @@
-import "ant-design-vue/lib/button/style";
+import "ant-design-vue/lib/button/style/index.css";
 import { withInstall } from "/@/utils";
 import Button from "./src/Button.vue";
 
